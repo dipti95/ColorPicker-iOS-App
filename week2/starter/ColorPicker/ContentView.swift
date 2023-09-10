@@ -34,24 +34,26 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 0.0
-  @State private var greenColor: Double = 0.0
-  @State private var blueColor: Double = 0.0
-  @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
+  @State private var redColor: Double = 255.0
+  @State private var greenColor: Double = 100.0
+  @State private var blueColor: Double = 50.0
+  @State private var foregroundColor = Color(red: 255.0/255, green: 100.0/255 , blue: 50.0/255)
 
   var body: some View {
 
     VStack {
       Text("Color Picker")
         .font(.largeTitle)
+        .bold()
 
       RoundedRectangle(cornerRadius: 0)
         .foregroundColor(foregroundColor)
-        .border(.black)
+        .border(.ultraThinMaterial, width: 10)
       VStack {
         Text("Red")
         HStack {
           Slider(value: $redColor, in: 0...255)
+            .accentColor(.red)
           Text("\(Int(redColor.rounded()))")
         }
       }
@@ -59,6 +61,7 @@ struct ContentView: View {
         Text("Green")
         HStack {
           Slider(value: $greenColor, in: 0...255)
+            .accentColor(.green)
           Text("\(Int(greenColor.rounded()))")
         }
       }
@@ -66,14 +69,27 @@ struct ContentView: View {
         Text("Blue")
         HStack {
           Slider(value: $blueColor, in: 0...255)
+            .accentColor(.blue)
           Text("\(Int(blueColor.rounded()))")
         }
       }
       Button("Set Color") {
         foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
       }
+      .padding(20.0)
+      .background(
+        Color.blue
+      )
+      .cornerRadius(21.0)
+      .overlay(
+        RoundedRectangle(cornerRadius: 21.0)
+          .stroke(Color.white, lineWidth: 2)
+      )
+      .foregroundStyle(.white)
+      .bold()
+      .font(.title3)
     }
-    .background(Color.white)
+    .background(Color("BackgroundColor"))
     .padding(20)
 
   }
@@ -82,5 +98,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+    ContentView()
+      .preferredColorScheme(.dark)
   }
 }

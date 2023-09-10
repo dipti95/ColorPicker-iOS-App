@@ -1,15 +1,15 @@
 /// Copyright (c) 2023 Kodeco Inc.
-///
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -32,34 +32,40 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 255.0
-  @State private var greenColor: Double = 100.0
-  @State private var blueColor: Double = 50.0
-  @State private var foregroundColor = Color(red: 255.0/255, green: 100.0/255 , blue: 50.0/255)
-
-  var body: some View {
-
-    VStack {
-      TextView(foregroundColor: $foregroundColor)
-      SliderView(text: "Red", color: $redColor)
-      SliderView(text: "Green", color: $greenColor)
-      SliderView(text: "Blue", color: $blueColor)
-      ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor)
+struct SliderView: View {
+  var text: String
+  @Binding var color: Double
+  var accentColor : Color {
+    if text == "Red" {
+      return .red
     }
-    .background(Color("BackgroundColor"))
-    .padding(20)
-
+    if text == "Green" {
+      return .green
+    }
+    if text == "Blue" {
+      return .blue
+    }
+    return .accentColor
+  }
+  
+  var body: some View {
+    VStack {
+      Text(text)
+      HStack {
+        Slider(value: $color, in: 0...255)
+          .accentColor(accentColor)
+        Text("\(Int(color.rounded()))")
+      }
+    }
   }
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
+struct SliderView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
-    ContentView()
-      .preferredColorScheme(.dark)
+    VStack{
+      SliderView(text:"Red",color: .constant(200.00))
+      SliderView(text:"Green",color: .constant(200.00))
+      SliderView(text:"Blue",color: .constant(200.00))
+    }
   }
 }

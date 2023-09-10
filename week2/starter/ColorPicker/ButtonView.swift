@@ -1,15 +1,15 @@
 /// Copyright (c) 2023 Kodeco Inc.
-///
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -32,34 +32,33 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 255.0
-  @State private var greenColor: Double = 100.0
-  @State private var blueColor: Double = 50.0
-  @State private var foregroundColor = Color(red: 255.0/255, green: 100.0/255 , blue: 50.0/255)
-
+struct ButtonView: View {
+  @Binding var foregroundColor : Color
+  @Binding var redColor : Double
+  @Binding var greenColor : Double
+  @Binding var blueColor : Double
+  
   var body: some View {
-
-    VStack {
-      TextView(foregroundColor: $foregroundColor)
-      SliderView(text: "Red", color: $redColor)
-      SliderView(text: "Green", color: $greenColor)
-      SliderView(text: "Blue", color: $blueColor)
-      ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor)
+    Button("Set Color") {
+      foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
     }
-    .background(Color("BackgroundColor"))
-    .padding(20)
-
+    .padding(20.0)
+    .background(
+      Color.blue
+    )
+    .cornerRadius(21.0)
+    .overlay(
+      RoundedRectangle(cornerRadius: 21.0)
+        .stroke(Color.white, lineWidth: 2)
+    )
+    .foregroundStyle(.white)
+    .bold()
+    .font(.title3)
   }
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
+struct ButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
-    ContentView()
-      .preferredColorScheme(.dark)
+    ButtonView(foregroundColor: .constant(Color(red: 255.0/255, green: 100.0/255, blue: 50.0/255)) , redColor: .constant(200.00), greenColor: .constant(200.00), blueColor: .constant(200.00))
   }
 }

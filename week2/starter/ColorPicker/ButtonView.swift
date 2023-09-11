@@ -40,16 +40,16 @@ struct ButtonView: View {
   
   var body: some View {
     Button("Set Color") {
-      foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
+      foregroundColor = Color(red: redColor / Constants.General.maxValueForColor, green: greenColor / Constants.General.maxValueForColor, blue: blueColor / Constants.General.maxValueForColor)
     }
-    .padding(20.0)
+    .padding(Constants.General.padding)
     .background(
       Color.blue
     )
-    .cornerRadius(21.0)
+    .cornerRadius(Constants.General.cornerRadius)
     .overlay(
-      RoundedRectangle(cornerRadius: 21.0)
-        .stroke(Color.white, lineWidth: 2)
+      RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
+        .stroke(Color.white, lineWidth: Constants.General.strokeWidth)
     )
     .foregroundStyle(.white)
     .bold()
@@ -59,6 +59,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    ButtonView(foregroundColor: .constant(Color(red: 255.0/255, green: 100.0/255, blue: 50.0/255)) , redColor: .constant(200.00), greenColor: .constant(200.00), blueColor: .constant(200.00))
+    ButtonView(foregroundColor: .constant(Color(red: 255.0/Constants.General.maxValueForColor, green: 100.0/Constants.General.maxValueForColor, blue: 50.0/Constants.General.maxValueForColor)) , redColor: .constant(200.00), greenColor: .constant(200.00), blueColor: .constant(200.00))
   }
 }

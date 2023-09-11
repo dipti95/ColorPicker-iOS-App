@@ -14,6 +14,8 @@
 		3786DDFA2AAE4FA90029D0A5 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786DDF92AAE4FA90029D0A5 /* SliderView.swift */; };
 		3786DDFC2AAE599F0029D0A5 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786DDFB2AAE599F0029D0A5 /* ButtonView.swift */; };
 		3786DDFE2AAE63930029D0A5 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786DDFD2AAE63930029D0A5 /* TextView.swift */; };
+		3786DE002AAE81430029D0A5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786DDFF2AAE81430029D0A5 /* Constants.swift */; };
+		3786DE022AAE91860029D0A5 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786DE012AAE91860029D0A5 /* RectangleView.swift */; };
 		37BB862F2AAD2EF400D2EC87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		3786DDF92AAE4FA90029D0A5 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		3786DDFB2AAE599F0029D0A5 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		3786DDFD2AAE63930029D0A5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		3786DDFF2AAE81430029D0A5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3786DE012AAE91860029D0A5 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,11 @@
 			children = (
 				3786DDFB2AAE599F0029D0A5 /* ButtonView.swift */,
 				3786DDFD2AAE63930029D0A5 /* TextView.swift */,
+				3786DE012AAE91860029D0A5 /* RectangleView.swift */,
 				3786DDF92AAE4FA90029D0A5 /* SliderView.swift */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				18D775C422AD944300AE281E /* ContentView.swift */,
+				3786DDFF2AAE81430029D0A5 /* Constants.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
@@ -179,10 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3786DDFA2AAE4FA90029D0A5 /* SliderView.swift in Sources */,
+				3786DE022AAE91860029D0A5 /* RectangleView.swift in Sources */,
 				37BB862F2AAD2EF400D2EC87 /* ContentView.swift in Sources */,
 				3786DDFC2AAE599F0029D0A5 /* ButtonView.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				3786DDFE2AAE63930029D0A5 /* TextView.swift in Sources */,
+				3786DE002AAE81430029D0A5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

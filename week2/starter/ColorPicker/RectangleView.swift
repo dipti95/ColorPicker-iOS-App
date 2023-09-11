@@ -1,15 +1,15 @@
 /// Copyright (c) 2023 Kodeco Inc.
-///
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -32,47 +32,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 255.0
-  @State private var greenColor: Double = 100.0
-  @State private var blueColor: Double = 50.0
-  @State private var foregroundColor = Color(red: 255.0/Constants.General.maxValueForColor, green: 100.0/Constants.General.maxValueForColor , blue: 50.0/Constants.General.maxValueForColor)
-
-  var body: some View {
-
-    VStack {
-      TextView()
-      RectangleView(foregroundColor: $foregroundColor)
-      SliderViews(red: $redColor, green: $greenColor, blue: $blueColor)
-      ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor)
+struct RectangleView: View {
+  @Binding var foregroundColor: Color
+    var body: some View {
+      RoundedRectangle(cornerRadius: 0)
+        .foregroundColor(foregroundColor)
+        .border(.ultraThinMaterial, width: Constants.General.borderWidth)
     }
-    .background(Color("BackgroundColor"))
-    .padding(Constants.General.padding)
-
-  }
 }
 
-struct SliderViews: View {
-  @Binding var red: Double
-  @Binding var green: Double
-  @Binding var blue: Double
-  
-  var body: some View {
-    SliderView(text: "Red", color: $red)
-    SliderView(text: "Green", color: $green)
-    SliderView(text: "Blue", color: $blue)
-  }
-}
-
-
-
-
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-    ContentView()
-      .preferredColorScheme(.dark)
-  }
+struct RectangleView_Previews: PreviewProvider {
+    static var previews: some View {
+        RectangleView(foregroundColor: .constant(Color(red: 255.0/Constants.General.maxValueForColor, green: 100.0/Constants.General.maxValueForColor, blue: 50.0/Constants.General.maxValueForColor)))
+    }
 }

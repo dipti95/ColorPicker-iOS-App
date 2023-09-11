@@ -33,20 +33,17 @@
 import SwiftUI
 
 struct TextView: View {
-  @Binding var foregroundColor: Color
+ 
   var body: some View {
     Text("Color Picker")
       .font(.largeTitle)
       .bold()
-
-    RoundedRectangle(cornerRadius: 0)
-      .foregroundColor(foregroundColor)
-      .border(.ultraThinMaterial, width: 10)
   }
+    
 }
 
 struct TextView_Previews: PreviewProvider {
   static var previews: some View {
-    TextView(foregroundColor: .constant(Color(red: 255.0/255, green: 100.0/255, blue: 50.0/255)))
+    TextView()
   }
 }

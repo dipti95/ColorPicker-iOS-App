@@ -33,6 +33,10 @@
 import SwiftUI
 
 struct ContentView: View {
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+  
   @State private var alertIsVisible: Bool = false
   @State private var redColor: Double = 255.0
   @State private var greenColor: Double = 100.0
@@ -40,16 +44,26 @@ struct ContentView: View {
   @State private var foregroundColor = Color(red: 255.0/Constants.General.maxValueForColor, green: 100.0/Constants.General.maxValueForColor , blue: 50.0/Constants.General.maxValueForColor)
 
   var body: some View {
-
-    VStack {
-      TextView()
-      RectangleView(foregroundColor: $foregroundColor)
-      SliderViews(red: $redColor, green: $greenColor, blue: $blueColor)
-      ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor)
-    }
-    .background(Color("BackgroundColor"))
-    .padding(Constants.General.padding)
-
+    
+      VStack {
+        TextView()
+        if verticalSizeClass == .regular && horizontalSizeClass == .compact  {
+          
+            RectangleView(foregroundColor: $foregroundColor)
+            SliderViews(red: $redColor, green: $greenColor, blue: $blueColor)
+        }else {
+          HStack{
+            RectangleView(foregroundColor: $foregroundColor)
+            VStack{
+              SliderViews(red: $redColor, green: $greenColor, blue: $blueColor)
+            }
+          }
+        }
+        ButtonView(foregroundColor: $foregroundColor, redColor: $redColor, greenColor: $greenColor, blueColor: $blueColor)
+      }
+      .background(Color("BackgroundColor"))
+      .padding(Constants.General.padding)
+      
   }
 }
 
